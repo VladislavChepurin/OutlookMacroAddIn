@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookMacroAddIn", "OutlookMacroAddIn\OutlookMacroAddIn.csproj", "{DA9BD3BE-2193-42E7-BEBB-5D8439992B24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA9BD3BE-2193-42E7-BEBB-5D8439992B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA9BD3BE-2193-42E7-BEBB-5D8439992B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA9BD3BE-2193-42E7-BEBB-5D8439992B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA9BD3BE-2193-42E7-BEBB-5D8439992B24}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A98B9157-F5E5-437E-A850-F6EB84BAD232}
+	EndGlobalSection
+EndGlobal
