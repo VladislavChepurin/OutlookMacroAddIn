@@ -30,27 +30,27 @@ namespace OutlookMacroAddIn
             return Application.Explorers;
         }
 
-        public Outlook.MAPIFolder GetMAPIFolder()
-        {
+        //public Outlook.MAPIFolder GetMAPIFolder()
+        //{
 
-            return (Outlook.MAPIFolder)Application.MAPIFolder;
-        }
+        //    return (Outlook.MAPIFolder)Application.MAPIFolder;
+        //}
 
-        public Outlook.MailItem GetMailItem()
-        {
-            return (Outlook.MailItem)Application.MailItem;
-        }
+        //public Outlook.MailItem GetMailItem()
+        //{
+        //    return (Outlook.MailItem)Application.MailItem;
+        //}
 
-        public Outlook.TaskItem GetTaskItem()
-        {
-            return (Outlook.TaskItem)Application.TaskItem;
-        }
+        //public Outlook.TaskItem GetTaskItem()
+        //{
+        //    return (Outlook.TaskItem)Application.TaskItem;
+        //}
 
-        public Outlook.ContactItem GetContactItem()
-        {
-            return (Outlook.ContactItem)Application.ContactItem;
-        }
-    }
+        //public Outlook.ContactItem GetContactItem()
+        //{
+        //    return (Outlook.ContactItem)Application.ContactItem;
+        //}
+    
 
 
     #region Код, автоматически созданный VSTO
