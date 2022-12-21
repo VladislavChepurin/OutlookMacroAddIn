@@ -18,17 +18,19 @@ namespace OutlookMacroAddIn
         public Outlook.Application GetApplication()
         { 
             return Application;
+        }        
+
+        public Outlook.Inspector GetInspector()
+        {
+            return GetApplication().ActiveInspector();
         }
 
-        public Outlook.Inspectors GetInspectors()
+        public Outlook.Explorer GetExplorer()
         {
-            return Application.Inspectors;
+            return GetApplication().ActiveExplorer();
         }
 
-        public Outlook.Explorers GetExplorers()
-        {
-            return Application.Explorers;
-        }
+
 
         //public Outlook.MAPIFolder GetMAPIFolder()
         //{
@@ -50,16 +52,16 @@ namespace OutlookMacroAddIn
         //{
         //    return (Outlook.ContactItem)Application.ContactItem;
         //}
-    
 
 
-    #region Код, автоматически созданный VSTO
 
-    /// <summary>
-    /// Требуемый метод для поддержки конструктора — не изменяйте 
-    /// содержимое этого метода с помощью редактора кода.
-    /// </summary>
-    private void InternalStartup()
+        #region Код, автоматически созданный VSTO
+
+        /// <summary>
+        /// Требуемый метод для поддержки конструктора — не изменяйте 
+        /// содержимое этого метода с помощью редактора кода.
+        /// </summary>
+        private void InternalStartup()
         {
             this.Startup += new System.EventHandler(ThisAddIn_Startup);
             this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);

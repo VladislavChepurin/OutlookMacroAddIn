@@ -1,19 +1,36 @@
-﻿using System;
+﻿using OutlookMacroAddIn.Serializable.Interfaces;
+using System;
 using System.IO;
 
 namespace OutlookMacroAddIn.Functions
 {
     internal class ConvertToProject : AbstractFunctions
     {
-        //private readonly 
-        public ConvertToProject()
-        {
+               
+        private readonly IConvertToProjectSettings settings;
 
+        public ConvertToProject(IConvertToProjectSettings settings)
+        {
+            this.settings= settings;
         }
 
         public override void Start()
         {
-            throw new NotImplementedException();
+            string folder;
+            if (string.IsNullOrEmpty(settings.FolderCreateProgect))
+            {
+                folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
+            else
+            {
+                folder = settings.FolderCreateProgect;
+            }
+
+            var inspector = Inspector.CurrentItem;
+            string subject = inspector.Subject();
+
+            CreateDirectory(folder, subject);
+
         }
 
         private void CreateDirectory(string rootDirectory, string path)
