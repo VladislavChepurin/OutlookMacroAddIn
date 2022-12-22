@@ -165,6 +165,7 @@
   <ItemGroup>
     <Compile Include="Functions\AbstractFunctions.cs" />
     <Compile Include="Functions\ConvertToProject.cs" />
+    <Compile Include="Functions\Models\FoldersModels.cs" />
     <Compile Include="MainRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -214,6 +215,7 @@
     <Compile Include="Serializable\Entity\AppSettings.cs" />
     <Compile Include="Serializable\Entity\ConvertToProjectSettings.cs" />
     <Compile Include="Serializable\Interfaces\IConvertToProjectSettings.cs" />
+    <Compile Include="Services\GetCurrencyTsb.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -241,7 +243,7 @@
     </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>61FE5DC7804E8FAA83A4F7AD839D45863F4E64C3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>168F0C56C6F895B7EC1B81D5A4715AB9A4BCE8E8</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -28,8 +28,7 @@ namespace OutlookMacroAddIn
         public Outlook.Explorer GetExplorer()
         {
             return GetApplication().ActiveExplorer();
-        }
-
+        }       
 
 
         //public Outlook.MAPIFolder GetMAPIFolder()

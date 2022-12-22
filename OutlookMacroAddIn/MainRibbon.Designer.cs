@@ -37,13 +37,19 @@
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.button1 = this.Factory.CreateRibbonButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.label1 = this.Factory.CreateRibbonLabel();
+            this.label2 = this.Factory.CreateRibbonLabel();
+            this.label3 = this.Factory.CreateRibbonLabel();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
+            this.group2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab1
             // 
             this.tab1.Groups.Add(this.group1);
+            this.tab1.Groups.Add(this.group2);
             this.tab1.Label = "Абиэлт";
             this.tab1.Name = "tab1";
             // 
@@ -61,6 +67,29 @@
             this.button1.Name = "button1";
             this.button1.ShowImage = true;
             // 
+            // group2
+            // 
+            this.group2.Items.Add(this.label1);
+            this.group2.Items.Add(this.label2);
+            this.group2.Items.Add(this.label3);
+            this.group2.Label = "Курсы валют ЦБ РФ";
+            this.group2.Name = "group2";
+            // 
+            // label1
+            // 
+            this.label1.Label = "label1";
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            this.label2.Label = "label2";
+            this.label2.Name = "label2";
+            // 
+            // label3
+            // 
+            this.label3.Label = "label3";
+            this.label3.Name = "label3";
+            // 
             // MainRibbon
             // 
             this.Name = "MainRibbon";
@@ -71,6 +100,8 @@
             this.tab1.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -80,6 +111,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonLabel label1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonLabel label2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonLabel label3;
     }
 
     partial class ThisRibbonCollection

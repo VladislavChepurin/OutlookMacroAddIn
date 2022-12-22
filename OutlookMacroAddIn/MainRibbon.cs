@@ -3,6 +3,8 @@ using OutlookMacroAddIn.Functions;
 using System.IO;
 using System;
 using OutlookMacroAddIn.Serializable;
+using System.Threading;
+using OutlookMacroAddIn.Services;
 
 namespace OutlookMacroAddIn
 {
@@ -22,6 +24,23 @@ namespace OutlookMacroAddIn
                 var convetrToProject = new ConvertToProject(convertToProjectSettings);
                 convetrToProject.Start();
             };
+
+            var getRate = new GetCurrencyTsb
+            {
+                CurrencyHandler = ShowCurrencyPrice
+            };
+            //В новом потоке запускаем метод получения данных от Центробанка
+            new Thread(() =>
+            {
+                getRate.Start();
+            }).Start();
+        }
+
+        private void ShowCurrencyPrice(double usdCurrency, double euroCurrency, double cnhCurrency)
+        {
+            label1.Label = "Доллар = " + usdCurrency;
+            label2.Label = "ЕВРО     = " + euroCurrency;
+            label3.Label = "Юань    = " + cnhCurrency;
         }
     }
 }

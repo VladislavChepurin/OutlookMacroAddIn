@@ -5,10 +5,9 @@ namespace OutlookMacroAddIn.Functions
 {
     internal abstract class AbstractFunctions
     {
-        protected readonly Microsoft.Office.Interop.Outlook.Application Application = Globals.ThisAddIn.GetApplication();        
+        protected readonly Microsoft.Office.Interop.Outlook.Application Application = Globals.ThisAddIn.GetApplication();
         protected readonly Inspector Inspector = Globals.ThisAddIn.GetInspector();
         protected readonly Explorer Explorer = Globals.ThisAddIn.GetExplorer();
-
 
         public abstract void Start();
 

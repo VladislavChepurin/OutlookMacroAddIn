@@ -1,6 +1,8 @@
-﻿using OutlookMacroAddIn.Serializable.Interfaces;
+﻿using Microsoft.Office.Interop.Outlook;
+using OutlookMacroAddIn.Serializable.Interfaces;
 using System;
 using System.IO;
+using OutlookMacroAddIn.Functions.Models;
 
 namespace OutlookMacroAddIn.Functions
 {
@@ -26,37 +28,55 @@ namespace OutlookMacroAddIn.Functions
                 folder = settings.FolderCreateProgect;
             }
 
-            var inspector = Inspector.CurrentItem;
-            var subject = inspector.Subject();
-            if (subject is string)
+                                 
+            if (Inspector != null)
             {
-                var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", "").Replace("Re:  ", "");
-                CreateDirectory(folder, subject);
-            }
+                if (Inspector.CurrentItem != null)
+                {
+                    var mail = Inspector.CurrentItem;
+                    var subject = mail.Subject();
+
+                    var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", "").Replace("Re:  ", "").Replace("Fw: ", "").Replace("Fwd: ", "");
+                    var foldersModel = new FoldersModels() { RootFolders = Path.Combine(folder, trimSubject) };
+                    CreateDirectory(foldersModel);
+                    
+                    if (mail.attachments.count > 0)
+                    {
+                        for (int i = 1; i <= mail.attachments.count; i++)
+                        {
+                            mail.attachments[i].saveasfile
+                                (Path.Combine(folder, foldersModel.RootFolders, foldersModel.SourceDocumentationInfo, mail.attachments[i].filename));
+                        }
+                    }
+                }
+            }                   
         }
 
-        private void CreateDirectory(string rootDirectory, string path)
+        private static void CreateDirectory(FoldersModels foldersModel)
         {
-            var directory = new DirectoryInfo(Path.Combine(rootDirectory, path));
-            var dateTime = DateTime.Now;
-
+            var directory = new DirectoryInfo(foldersModel.RootFolders);
+            
             if (!directory.Exists)
             {
                 directory.Create();
-                directory.CreateSubdirectory("1. Исходная документация");
+                directory.CreateSubdirectory(foldersModel.SourceDocumentation);
 
-                directory.CreateSubdirectory(Path.Combine("1. Исходная документация", $"Инфо {dateTime.ToString("dd.MM.yyyy")}"));
-                directory.CreateSubdirectory(Path.Combine("1. Исходная документация", "Паспорта"));
-                directory.CreateSubdirectory(Path.Combine("1. Исходная документация", "Сертификаты_"));
+                directory.CreateSubdirectory(foldersModel.SourceDocumentationInfo);
+                directory.CreateSubdirectory(foldersModel.SourceDocumentationPassports);
+                directory.CreateSubdirectory(foldersModel.SourceDocumentationCertificates);
 
-                directory.CreateSubdirectory("2. Сборочная документация");
-                directory.CreateSubdirectory(Path.Combine("2. Сборочная документация", "Чертеж (DWG+PDF)"));
+                directory.CreateSubdirectory(foldersModel.AssemblyDocumentation);
+                directory.CreateSubdirectory(foldersModel.AssemblyDocumentationDrawing);
 
-                directory.CreateSubdirectory("3. Исполнительная документация");
-                directory.CreateSubdirectory("4. Фото");
-                directory.CreateSubdirectory("5. Логистика (Отгрузочные+подписанный документ с объекта)");
-                directory.CreateSubdirectory("6. Рекламации");
+                directory.CreateSubdirectory(foldersModel.ExecutiveDocumentation);
+
+                directory.CreateSubdirectory(foldersModel.Photographs);
+
+                directory.CreateSubdirectory(foldersModel.Logistics);
+
+                directory.CreateSubdirectory(foldersModel.Complaints);
             }
+
         }
     }
 }
