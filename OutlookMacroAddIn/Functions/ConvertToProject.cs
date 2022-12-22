@@ -27,10 +27,12 @@ namespace OutlookMacroAddIn.Functions
             }
 
             var inspector = Inspector.CurrentItem;
-            string subject = inspector.Subject();
-
-            CreateDirectory(folder, subject);
-
+            var subject = inspector.Subject();
+            if (subject is string)
+            {
+                var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", "").Replace("Re:  ", "");
+                CreateDirectory(folder, subject);
+            }
         }
 
         private void CreateDirectory(string rootDirectory, string path)
