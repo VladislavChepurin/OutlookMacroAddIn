@@ -7,11 +7,11 @@ using System.Security;
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // общие сведения об этой сборке.
 [assembly: AssemblyTitle("OutlookMacroAddIn")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Данное программное обеспечение предоставлено AS IS и автор не несет ответственности за работу программы, а также потенцальный ущерб, который может нанести это программное обеспечение в руках третьих лиц. Автор допускает использование данного программного обеспечения сторонними лицами на безвозмездной основе, если это не противоречит нормативным актам Российской Федерации или не затрагивает права или интересы третьих лиц.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OutlookMacroAddIn")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCompany("vlad1988_1@mail.ru")]
+[assembly: AssemblyProduct("Набор расширений для Outlook")]
+[assembly: AssemblyCopyright("Copyright © Чепурин Владислав 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

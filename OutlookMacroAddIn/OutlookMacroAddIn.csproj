@@ -163,6 +163,12 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Forms\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Functions\AbstractFunctions.cs" />
     <Compile Include="Functions\ConvertToProject.cs" />
     <Compile Include="Functions\Models\FoldersModels.cs" />
@@ -175,6 +181,9 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="Forms\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainRibbon.resx">
       <DependentUpon>MainRibbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,7 +237,13 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\201.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\202.png" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

@@ -5,6 +5,8 @@ using System;
 using OutlookMacroAddIn.Serializable;
 using System.Threading;
 using OutlookMacroAddIn.Services;
+using System.Threading.Tasks;
+using OutlookMacroAddIn.Forms;
 
 namespace OutlookMacroAddIn
 {
@@ -25,6 +27,22 @@ namespace OutlookMacroAddIn
                 convetrToProject.Start();
             };
 
+            // Окно "О программе"
+            button2.Click += async (s, a) =>
+            {
+                await Task.Run(() =>
+                {
+                    var about = new AboutBox1();
+                    about.ShowDialog();
+                    Thread.Sleep(5000);
+                });
+            };
+
+            button3.Click += (s, a) =>
+            {
+                System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory);
+            };
+
             var getRate = new GetCurrencyTsb
             {
                 CurrencyHandler = ShowCurrencyPrice
@@ -35,6 +53,7 @@ namespace OutlookMacroAddIn
                 getRate.Start();
             }).Start();
         }
+
 
         private void ShowCurrencyPrice(double usdCurrency, double euroCurrency, double cnhCurrency)
         {

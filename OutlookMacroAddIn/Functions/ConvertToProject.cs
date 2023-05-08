@@ -27,29 +27,35 @@ namespace OutlookMacroAddIn.Functions
             {
                 folder = settings.FolderCreateProgect;
             }
+                  
+            
 
-                                 
-            if (Inspector != null)
+
+            if (Inspector == null || Inspector.CurrentItem == null)
+                return;
+
+            var mail = Inspector.CurrentItem;
+            var subject = mail.Subject();
+
+            var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", String.Empty).Replace("Re:  ", String.Empty).Replace("Fw: ", String.Empty).Replace("Fwd: ", String.Empty);
+            var foldersModel = new FoldersModels() { RootFolders = Path.Combine(folder, trimSubject) };
+            CreateDirectory(foldersModel);
+
+            if (mail.attachments.count > 0)
             {
-                if (Inspector.CurrentItem != null)
+                for (int i = 1; i <= mail.attachments.count; i++)
                 {
-                    var mail = Inspector.CurrentItem;
-                    var subject = mail.Subject();
-
-                    var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", "").Replace("Re:  ", "").Replace("Fw: ", "").Replace("Fwd: ", "");
-                    var foldersModel = new FoldersModels() { RootFolders = Path.Combine(folder, trimSubject) };
-                    CreateDirectory(foldersModel);
-                    
-                    if (mail.attachments.count > 0)
-                    {
-                        for (int i = 1; i <= mail.attachments.count; i++)
-                        {
-                            mail.attachments[i].saveasfile
-                                (Path.Combine(folder, foldersModel.RootFolders, foldersModel.SourceDocumentationInfo, mail.attachments[i].filename));
-                        }
-                    }
+                    mail.attachments[i].saveasfile
+                        (Path.Combine(folder, foldersModel.RootFolders, foldersModel.SourceDocumentationInfo, mail.attachments[i].filename));
                 }
-            }                   
+            }
+            else
+            {
+                MessageInformation("В данном письме нет вложений, создание папки проекта невозможно!", "Нет вложений");
+            }
+
+
+
         }
 
         private static void CreateDirectory(FoldersModels foldersModel)
