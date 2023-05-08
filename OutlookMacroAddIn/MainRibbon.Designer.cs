@@ -34,14 +34,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.label1 = this.Factory.CreateRibbonLabel();
             this.label2 = this.Factory.CreateRibbonLabel();
             this.label3 = this.Factory.CreateRibbonLabel();
             this.group3 = this.Factory.CreateRibbonGroup();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.button2 = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
@@ -63,6 +64,14 @@
             this.group1.Items.Add(this.button1);
             this.group1.Label = "Основные макросы";
             this.group1.Name = "group1";
+            // 
+            // button1
+            // 
+            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Image = global::OutlookMacroAddIn.Resource._101;
+            this.button1.Label = "Преобразовать в проект";
+            this.button1.Name = "button1";
+            this.button1.ShowImage = true;
             // 
             // group2
             // 
@@ -93,14 +102,6 @@
             this.group3.Items.Add(this.button3);
             this.group3.Name = "group3";
             // 
-            // button1
-            // 
-            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button1.Image = global::OutlookMacroAddIn.Resource._101;
-            this.button1.Label = "Преобразовать в проект";
-            this.button1.Name = "button1";
-            this.button1.ShowImage = true;
-            // 
             // button2
             // 
             this.button2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -112,7 +113,7 @@
             // button3
             // 
             this.button3.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button3.Image = global::OutlookMacroAddIn.Properties.Resources._202;
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.Label = "Открыть папку";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
