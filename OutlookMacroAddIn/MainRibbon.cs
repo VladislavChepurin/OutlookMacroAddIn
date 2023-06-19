@@ -4,7 +4,6 @@ using System.IO;
 using System;
 using OutlookMacroAddIn.Serializable;
 using System.Threading;
-using OutlookMacroAddIn.Services;
 using System.Threading.Tasks;
 using OutlookMacroAddIn.Forms;
 
@@ -17,15 +16,20 @@ namespace OutlookMacroAddIn
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
             AppSettingsDeserialize app = new AppSettingsDeserialize(jsonFilePath);
-            var settings = app.GetSettingsModels();
-            var convertToProjectSettings = settings.ConvertToProjectSettings;
-
+            var settings = app.GetSettingsModels();            
 
             button1.Click += (s, a) =>
             {
-                var convetrToProject = new ConvertToProject(convertToProjectSettings);
+                var convetrToProject = new ConvertToProject(settings);
                 convetrToProject.Start();
             };
+
+            button4.Click += (s, a) =>
+            {
+                var convetrToCalc = new ConvertToCalc(settings);
+                convetrToCalc.Start();
+            };
+
 
             // Окно "О программе"
             button2.Click += async (s, a) =>
@@ -43,23 +47,6 @@ namespace OutlookMacroAddIn
                 System.Diagnostics.Process.Start("explorer.exe", AppDomain.CurrentDomain.BaseDirectory);
             };
 
-            var getRate = new GetCurrencyTsb
-            {
-                CurrencyHandler = ShowCurrencyPrice
-            };
-            //В новом потоке запускаем метод получения данных от Центробанка
-            new Thread(() =>
-            {
-                getRate.Start();
-            }).Start();
-        }
-
-
-        private void ShowCurrencyPrice(double usdCurrency, double euroCurrency, double cnhCurrency)
-        {
-            label1.Label = "Доллар = " + usdCurrency;
-            label2.Label = "ЕВРО     = " + euroCurrency;
-            label3.Label = "Юань    = " + cnhCurrency;
-        }
+        }       
     }
 }

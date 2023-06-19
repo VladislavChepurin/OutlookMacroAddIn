@@ -3,6 +3,7 @@ using OutlookMacroAddIn.Serializable.Interfaces;
 using System;
 using System.IO;
 using OutlookMacroAddIn.Functions.Models;
+using OutlookMacroAddIn.Serializable.Entity;
 
 namespace OutlookMacroAddIn.Functions
 {
@@ -11,7 +12,7 @@ namespace OutlookMacroAddIn.Functions
                
         private readonly IConvertToProjectSettings settings;
 
-        public ConvertToProject(IConvertToProjectSettings settings)
+        public ConvertToProject(AppSettings settings)
         {
             this.settings= settings;
         }
@@ -27,9 +28,7 @@ namespace OutlookMacroAddIn.Functions
             {
                 folder = settings.FolderCreateProgect;
             }
-                  
-            
-
+                             
 
             if (Inspector == null || Inspector.CurrentItem == null)
                 return;
@@ -39,23 +38,21 @@ namespace OutlookMacroAddIn.Functions
 
             var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", String.Empty).Replace("Re:  ", String.Empty).Replace("Fw: ", String.Empty).Replace("Fwd: ", String.Empty);
             var foldersModel = new FoldersModels() { RootFolders = Path.Combine(folder, trimSubject) };
-            CreateDirectory(foldersModel);
-
+           
             if (mail.attachments.count > 0)
             {
+                CreateDirectory(foldersModel);
+
                 for (int i = 1; i <= mail.attachments.count; i++)
                 {
                     mail.attachments[i].saveasfile
-                        (Path.Combine(folder, foldersModel.RootFolders, foldersModel.SourceDocumentationInfo, mail.attachments[i].filename));
+                        (Path.Combine(foldersModel.RootFolders, foldersModel.SourceDocumentationInfo, mail.attachments[i].filename));
                 }
             }
             else
             {
                 MessageInformation("В данном письме нет вложений, создание папки проекта невозможно!", "Нет вложений");
             }
-
-
-
         }
 
         private static void CreateDirectory(FoldersModels foldersModel)
@@ -65,6 +62,7 @@ namespace OutlookMacroAddIn.Functions
             if (!directory.Exists)
             {
                 directory.Create();
+
                 directory.CreateSubdirectory(foldersModel.SourceDocumentation);
 
                 directory.CreateSubdirectory(foldersModel.SourceDocumentationInfo);

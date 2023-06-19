@@ -1,15 +1,16 @@
-﻿using System;
+﻿using OutlookMacroAddIn.Serializable.Interfaces;
 
 namespace OutlookMacroAddIn.Serializable.Entity
 {
-    [Serializable]
-    public class AppSettings
+    public class AppSettings: IConvertToProjectSettings
     {
-        public ConvertToProjectSettings ConvertToProjectSettings { get; set; }
+        public string FolderCreateProgect { get; set; }
+        public string FolderCreateCalc { get; set; }
 
-        public AppSettings(ConvertToProjectSettings convertToProjectSettings)
+        public AppSettings(string folderCreateProgect, string folderCreateCalc)
         {
-            ConvertToProjectSettings = convertToProjectSettings;
+            FolderCreateProgect = folderCreateProgect;
+            FolderCreateCalc = folderCreateCalc;
         }
     }
 }

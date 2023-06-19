@@ -170,6 +170,7 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="Functions\AbstractFunctions.cs" />
+    <Compile Include="Functions\ConvertToCalc.cs" />
     <Compile Include="Functions\ConvertToProject.cs" />
     <Compile Include="Functions\Models\FoldersModels.cs" />
     <Compile Include="MainRibbon.cs">
@@ -222,9 +223,7 @@
     </Compile>
     <Compile Include="Serializable\AppSettingsDeserialize.cs" />
     <Compile Include="Serializable\Entity\AppSettings.cs" />
-    <Compile Include="Serializable\Entity\ConvertToProjectSettings.cs" />
     <Compile Include="Serializable\Interfaces\IConvertToProjectSettings.cs" />
-    <Compile Include="Services\GetCurrencyTsb.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -244,6 +243,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\102.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
