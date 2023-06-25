@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using OutlookMacroAddIn.Functions.Models;
 using OutlookMacroAddIn.Serializable.Entity;
+using OutlookMacroAddIn.Services;
 
 namespace OutlookMacroAddIn.Functions
 {
@@ -48,6 +49,7 @@ namespace OutlookMacroAddIn.Functions
                     mail.attachments[i].saveasfile
                         (Path.Combine(foldersModel.RootFolders, foldersModel.SourceDocumentationInfo, mail.attachments[i].filename));
                 }
+                AutoClosingMessageBox.Show("Успешно создана папка проекта", "Готово", 4000);
             }
             else
             {

@@ -2,6 +2,7 @@
 using OutlookMacroAddIn.Functions.Models;
 using OutlookMacroAddIn.Serializable.Entity;
 using OutlookMacroAddIn.Serializable.Interfaces;
+using OutlookMacroAddIn.Services;
 using System;
 using System.IO;
 
@@ -42,6 +43,7 @@ namespace OutlookMacroAddIn.Functions
                     mail.attachments[i].saveasfile
                         (Path.Combine(currentFolder, mail.attachments[i].filename));
                 }
+                AutoClosingMessageBox.Show("Успешно создана папка расчета", "Готово", 4000);
             }
             else
             {
