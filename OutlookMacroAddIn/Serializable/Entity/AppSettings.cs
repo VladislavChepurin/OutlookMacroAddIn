@@ -2,7 +2,7 @@
 
 namespace OutlookMacroAddIn.Serializable.Entity
 {
-    public class AppSettings: IConvertToProjectSettings
+    public class AppSettings: IAppSettings
     {
         public string FolderCreateProgect { get; set; }
         public string FolderCreateCalc { get; set; }

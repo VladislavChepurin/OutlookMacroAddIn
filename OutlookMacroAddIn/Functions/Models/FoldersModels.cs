@@ -6,15 +6,30 @@ namespace OutlookMacroAddIn.Functions.Models
     public class FoldersModels
     {
         public string RootFolders {get; set;}
-        public string SourceDocumentation { get; } = "1. Исходная документация";
-        public string SourceDocumentationInfo { get; } = Path.Combine("1. Исходная документация", $"Инфо {DateTime.Now.ToString("dd.MM.yyyy")}");
-        public string SourceDocumentationPassports { get; } = Path.Combine("1. Исходная документация", "Паспорта");
-        public string SourceDocumentationCertificates { get; } = Path.Combine("1. Исходная документация", "Сертификаты");
-        public string AssemblyDocumentation { get; } = "2. Сборочная документация";
-        public string AssemblyDocumentationDrawing { get; } = Path.Combine("2. Сборочная документация", "Чертеж (DWG+PDF)");
-        public string ExecutiveDocumentation { get; } = "3. Исполнительная документация";
-        public string Photographs { get; } = "4. Фото";
-        public string Logistics { get; } = "5. Логистика (Отгрузочные+подписанный документ с объекта)";
-        public string Complaints { get; } = "6. Рекламации";
+        public string SourceDocumentation { get; set;}
+        public string SourceDocumentationInfo { get; set; }
+        public string SourceDocumentationPassports { get; set; }
+        public string SourceDocumentationCertificates { get; set; }
+        public string AssemblyDocumentation { get; set; }
+        public string AssemblyDocumentationDrawing { get; set; }
+        public string ExecutiveDocumentation { get; set;} 
+        public string Photographs { get; set; } 
+        public string Logistics { get; set; } 
+        public string Complaints { get; set; }
+
+        public FoldersModels(string rootFolders)
+        {
+            RootFolders = rootFolders;
+            SourceDocumentation = "1. Исходная документация";
+            SourceDocumentationInfo = Path.Combine(SourceDocumentation, $"Инфо {DateTime.Now:dd.MM.yyyy}");
+            SourceDocumentationPassports = Path.Combine(SourceDocumentation, "Паспорта");
+            SourceDocumentationCertificates = Path.Combine(SourceDocumentation, "Сертификаты");
+            AssemblyDocumentation = "2. Сборочная документация";
+            AssemblyDocumentationDrawing = Path.Combine(AssemblyDocumentation, "Чертеж (DWG+PDF)");
+            ExecutiveDocumentation = "3. Исполнительная документация";
+            Photographs = "4. Фото";
+            Logistics = "5. Логистика (Отгрузочные+подписанный документ с объекта)";
+            Complaints = "6. Рекламации";
+        }
     }
 }

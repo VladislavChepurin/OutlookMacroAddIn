@@ -223,7 +223,7 @@
     </Compile>
     <Compile Include="Serializable\AppSettingsDeserialize.cs" />
     <Compile Include="Serializable\Entity\AppSettings.cs" />
-    <Compile Include="Serializable\Interfaces\IConvertToProjectSettings.cs" />
+    <Compile Include="Serializable\Interfaces\IAppSettings.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>

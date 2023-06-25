@@ -9,7 +9,7 @@ namespace OutlookMacroAddIn.Functions
 {
     internal class ConvertToCalc : AbstractFunctions
     {
-        private readonly IConvertToProjectSettings settings;
+        private readonly IAppSettings settings;
         public ConvertToCalc(AppSettings settings)
         {
             this.settings = settings;
@@ -32,15 +32,15 @@ namespace OutlookMacroAddIn.Functions
 
             var mail = Inspector.CurrentItem;
             var subject = mail.Subject();
-            var foldersModel = new FoldersModels() { RootFolders = Path.Combine(folder, subject) };
+            var currentFolder = Path.Combine(folder, subject);
 
             if (mail.attachments.count > 0)
             {
-                CreateDirectory(foldersModel);
+                CreateDirectory(currentFolder);
                 for (int i = 1; i <= mail.attachments.count; i++)
                 {
                     mail.attachments[i].saveasfile
-                        (Path.Combine(foldersModel.RootFolders, mail.attachments[i].filename));
+                        (Path.Combine(currentFolder, mail.attachments[i].filename));
                 }
             }
             else
@@ -49,9 +49,9 @@ namespace OutlookMacroAddIn.Functions
             }
 
         }
-        private static void CreateDirectory(FoldersModels foldersModel)
+        private static void CreateDirectory(string foldersModel)
         {
-            var directory = new DirectoryInfo(foldersModel.RootFolders);
+            var directory = new DirectoryInfo(foldersModel);
 
             if (!directory.Exists)
             {

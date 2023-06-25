@@ -10,7 +10,7 @@ namespace OutlookMacroAddIn.Functions
     internal class ConvertToProject : AbstractFunctions
     {
                
-        private readonly IConvertToProjectSettings settings;
+        private readonly IAppSettings settings;
 
         public ConvertToProject(AppSettings settings)
         {
@@ -37,7 +37,7 @@ namespace OutlookMacroAddIn.Functions
             var subject = mail.Subject();
 
             var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", String.Empty).Replace("Re:  ", String.Empty).Replace("Fw: ", String.Empty).Replace("Fwd: ", String.Empty);
-            var foldersModel = new FoldersModels() { RootFolders = Path.Combine(folder, trimSubject) };
+            var foldersModel = new FoldersModels(Path.Combine(folder, trimSubject)) ;
            
             if (mail.attachments.count > 0)
             {
@@ -62,25 +62,17 @@ namespace OutlookMacroAddIn.Functions
             if (!directory.Exists)
             {
                 directory.Create();
-
                 directory.CreateSubdirectory(foldersModel.SourceDocumentation);
-
                 directory.CreateSubdirectory(foldersModel.SourceDocumentationInfo);
                 directory.CreateSubdirectory(foldersModel.SourceDocumentationPassports);
                 directory.CreateSubdirectory(foldersModel.SourceDocumentationCertificates);
-
                 directory.CreateSubdirectory(foldersModel.AssemblyDocumentation);
                 directory.CreateSubdirectory(foldersModel.AssemblyDocumentationDrawing);
-
                 directory.CreateSubdirectory(foldersModel.ExecutiveDocumentation);
-
                 directory.CreateSubdirectory(foldersModel.Photographs);
-
                 directory.CreateSubdirectory(foldersModel.Logistics);
-
                 directory.CreateSubdirectory(foldersModel.Complaints);
             }
-
         }
     }
 }
