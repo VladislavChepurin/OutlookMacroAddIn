@@ -11,24 +11,24 @@ namespace OutlookMacroAddIn.Functions
     internal class ConvertToProject : AbstractFunctions
     {
                
-        private readonly IAppSettings settings;
+        //private readonly IAppSettings settings;
 
-        public ConvertToProject(AppSettings settings)
-        {
-            this.settings= settings;
-        }
+        //public ConvertToProject(AppSettings settings)
+        //{
+        //    this.settings= settings;
+        //}
 
         public override void Start()
         {
-            string folder;
-            if (string.IsNullOrEmpty(settings.FolderCreateProgect))
-            {
-                folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            }
-            else
-            {
-                folder = settings.FolderCreateProgect;
-            }
+            //string folder;
+            //if (string.IsNullOrEmpty(settings.FolderCreateProgect))
+            //{
+               var folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //}
+            //else
+            //{
+            //    folder = settings.FolderCreateProgect;
+            //}
                              
 
             if (Inspector == null || Inspector.CurrentItem == null)

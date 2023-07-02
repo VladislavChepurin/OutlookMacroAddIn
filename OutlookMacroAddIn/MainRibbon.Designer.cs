@@ -37,9 +37,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRibbon));
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.button1 = this.Factory.CreateRibbonButton();
             this.button4 = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.button2 = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
@@ -61,6 +61,14 @@
             this.group1.Label = "Основные макросы";
             this.group1.Name = "group1";
             // 
+            // button1
+            // 
+            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Image = global::OutlookMacroAddIn.Resource._101;
+            this.button1.Label = "Преобразовать в проект";
+            this.button1.Name = "button1";
+            this.button1.ShowImage = true;
+            // 
             // button4
             // 
             this.button4.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -74,14 +82,6 @@
             this.group3.Items.Add(this.button2);
             this.group3.Items.Add(this.button3);
             this.group3.Name = "group3";
-            // 
-            // button1
-            // 
-            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button1.Image = global::OutlookMacroAddIn.Resource._101;
-            this.button1.Label = "Преобразовать в проект";
-            this.button1.Name = "button1";
-            this.button1.ShowImage = true;
             // 
             // button2
             // 
@@ -98,6 +98,7 @@
             this.button3.Label = "Открыть папку";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
+            this.button3.Visible = false;
             // 
             // MainRibbon
             // 

@@ -10,23 +10,23 @@ namespace OutlookMacroAddIn.Functions
 {
     internal class ConvertToCalc : AbstractFunctions
     {
-        private readonly IAppSettings settings;
-        public ConvertToCalc(AppSettings settings)
-        {
-            this.settings = settings;
-        }
+        //private readonly IAppSettings settings;
+        //public ConvertToCalc(AppSettings settings)
+        //{
+        //    this.settings = settings;
+        //}
 
         public override void Start()
         {
-            string folder;
-            if (string.IsNullOrEmpty(settings.FolderCreateCalc))
-            {
-                folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            }
-            else
-            {
-                folder = settings.FolderCreateCalc;
-            }
+            //string folder;
+            //if (string.IsNullOrEmpty(settings.FolderCreateCalc))
+            //{
+               var folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //}
+            //else
+            //{
+            //    folder = settings.FolderCreateCalc;
+            //}
 
             if (Inspector == null || Inspector.CurrentItem == null)
                 return;
