@@ -1,5 +1,4 @@
 ﻿using Microsoft.Office.Interop.Outlook;
-using OutlookMacroAddIn.Functions.Models;
 using OutlookMacroAddIn.Serializable.Entity;
 using OutlookMacroAddIn.Serializable.Interfaces;
 using OutlookMacroAddIn.Services;
@@ -10,30 +9,32 @@ namespace OutlookMacroAddIn.Functions
 {
     internal class ConvertToCalc : AbstractFunctions
     {
-        //private readonly IAppSettings settings;
-        //public ConvertToCalc(AppSettings settings)
-        //{
-        //    this.settings = settings;
-        //}
+        private readonly IAppSettings settings;
+        public ConvertToCalc(AppSettings settings)
+        {
+            this.settings = settings;
+        }
 
         public override void Start()
         {
-            //string folder;
-            //if (string.IsNullOrEmpty(settings.FolderCreateCalc))
-            //{
-               var folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //}
-            //else
-            //{
-            //    folder = settings.FolderCreateCalc;
-            //}
+            string folder;
+            if (string.IsNullOrEmpty(settings.FolderCreateCalc))
+            {
+                folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
+            else
+            {
+                folder = settings.FolderCreateCalc;
+            }
 
             if (Inspector == null || Inspector.CurrentItem == null)
                 return;
 
             var mail = Inspector.CurrentItem;
             var subject = mail.Subject();
-            var currentFolder = Path.Combine(folder, subject);
+            var trimSubject = subject.Replace(":", String.Empty).Replace("/", "_");
+
+            var currentFolder = Path.Combine(folder, trimSubject);
 
             if (mail.attachments.count > 0)
             {

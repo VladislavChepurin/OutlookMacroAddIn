@@ -15,18 +15,18 @@ namespace OutlookMacroAddIn
 
         private void MainRibbon_Load(object sender, RibbonUIEventArgs e)
         {
-            //AppSettingsDeserialize app = new AppSettingsDeserialize(jsonFilePath);
-            //var settings = app.GetSettingsModels();            
+            AppSettingsDeserialize app = new AppSettingsDeserialize(jsonFilePath);
+            var settings = app.GetSettingsModels();
 
             button1.Click += (s, a) =>
             {
-                var convetrToProject = new ConvertToProject();
+                var convetrToProject = new ConvertToProject(settings);
                 convetrToProject.Start();
             };
 
             button4.Click += (s, a) =>
             {
-                var convetrToCalc = new ConvertToCalc();
+                var convetrToCalc = new ConvertToCalc(settings);
                 convetrToCalc.Start();
             };
 

@@ -98,7 +98,6 @@
             this.button3.Label = "Открыть папку";
             this.button3.Name = "button3";
             this.button3.ShowImage = true;
-            this.button3.Visible = false;
             // 
             // MainRibbon
             // 

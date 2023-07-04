@@ -10,26 +10,26 @@ namespace OutlookMacroAddIn.Functions
 {
     internal class ConvertToProject : AbstractFunctions
     {
-               
-        //private readonly IAppSettings settings;
 
-        //public ConvertToProject(AppSettings settings)
-        //{
-        //    this.settings= settings;
-        //}
+        private readonly IAppSettings settings;
+
+        public ConvertToProject(AppSettings settings)
+        {
+            this.settings = settings;
+        }
 
         public override void Start()
         {
-            //string folder;
-            //if (string.IsNullOrEmpty(settings.FolderCreateProgect))
-            //{
-               var folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //}
-            //else
-            //{
-            //    folder = settings.FolderCreateProgect;
-            //}
-                             
+            string folder;
+            if (string.IsNullOrEmpty(settings.FolderCreateProgect))
+            {
+                folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
+            else
+            {
+                folder = settings.FolderCreateProgect;
+            }
+
 
             if (Inspector == null || Inspector.CurrentItem == null)
                 return;
@@ -37,7 +37,7 @@ namespace OutlookMacroAddIn.Functions
             var mail = Inspector.CurrentItem;
             var subject = mail.Subject();
 
-            var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", String.Empty).Replace("Re:  ", String.Empty).Replace("Fw: ", String.Empty).Replace("Fwd: ", String.Empty);
+            var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", String.Empty).Replace("Re: ", String.Empty).Replace("Fw: ", String.Empty).Replace("Fwd: ", String.Empty).Replace("/", "_");
             var foldersModel = new FoldersModels(Path.Combine(folder, trimSubject)) ;
            
             if (mail.attachments.count > 0)
