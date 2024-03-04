@@ -26,7 +26,7 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>OutlookMacroAddIn</RootNamespace>
     <AssemblyName>OutlookMacroAddIn</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>False</IsWebBootstrapper>
@@ -34,7 +34,7 @@
     <PublishUrl>publication\</PublishUrl>
     <InstallUrl />
     <TargetCulture>ru</TargetCulture>
-    <ApplicationVersion>1.0.1.1</ApplicationVersion>
+    <ApplicationVersion>1.0.3.2</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -254,6 +254,7 @@
     <Compile Include="Serializable\Entity\AppSettings.cs" />
     <Compile Include="Serializable\Interfaces\IAppSettings.cs" />
     <Compile Include="Services\AutoClosingMessageBox.cs" />
+    <Compile Include="Services\SubjectReplace.cs" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -292,7 +293,7 @@
     </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>168F0C56C6F895B7EC1B81D5A4715AB9A4BCE8E8</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B80EA4B88FA0323D72EA4155B629F21CF9941207</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

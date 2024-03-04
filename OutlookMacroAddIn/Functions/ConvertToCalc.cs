@@ -32,7 +32,7 @@ namespace OutlookMacroAddIn.Functions
 
             var mail = Inspector.CurrentItem;
             var subject = mail.Subject();
-            var trimSubject = subject.Replace(":", String.Empty).Replace("/", "_");
+            var trimSubject = SubjectReplace.CalcReplace(subject);
 
             var currentFolder = Path.Combine(folder, trimSubject);
 

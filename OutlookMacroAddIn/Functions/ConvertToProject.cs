@@ -37,7 +37,7 @@ namespace OutlookMacroAddIn.Functions
             var mail = Inspector.CurrentItem;
             var subject = mail.Subject();
 
-            var trimSubject = subject.Replace("НОВЫЙ ПРОЕКТ ", String.Empty).Replace("Re: ", String.Empty).Replace("Fw: ", String.Empty).Replace("Fwd: ", String.Empty).Replace("/", "_");
+            var trimSubject = SubjectReplace.ProgectReplace(subject);
             var foldersModel = new FoldersModels(Path.Combine(folder, trimSubject)) ;
            
             if (mail.attachments.count > 0)
